@@ -1,6 +1,6 @@
 import React from 'react';
 import './style/App.less';
-import { BrowserRouter, Route, Routes, redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MicroApps from './Components/MicroApps';
 import Menu from './Components/Menu';
 import Error from './Components/Error';
