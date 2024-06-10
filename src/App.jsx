@@ -3,7 +3,7 @@ import './style/App.less';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MicroApps from './Components/MicroApps';
 import Menu from './Components/Menu';
-import Error from './Components/Error';
+import ErrorInfo from './Components/ErrorInfo';
 import Container from './Components/Container';
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Container />} />
                     <Route path="/micro-apps/:microAppId" element={<MicroApps />} />
-                    <Route path="*" element={<Error />} />
+                    <Route path="*" element={<ErrorInfo />} />
                 </Routes>
             </BrowserRouter>
         </div>
