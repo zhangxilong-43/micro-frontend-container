@@ -1,6 +1,11 @@
 import React  from "react";
 import '../style/Container.less';
+import AIEditor from './AIEditor';
 
-const Container = () => <h1 className='container-info'>Hello, I'm Container.</h1>
+const Container = () => (
+    <>
+        <AIEditor />
+    </>
+)
 
 export default Container;

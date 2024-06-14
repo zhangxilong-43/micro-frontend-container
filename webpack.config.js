@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const host = "127.0.0.1";
 const port = "9091";
@@ -68,6 +69,14 @@ module.exports = {
           minifyCSS: true, // 缩小CSS样式元素和样式属性
         },
         nodeModules: path.resolve(__dirname, "./node_modules"),
+      }),
+      new ModuleFederationPlugin({
+        name: 'template_container',
+        filename: 'remoteEntry.js',
+        exposes: {
+          './AIEditor': './src/components/AIEditor',
+        },
+        shared: {},
       }),
     ],
     devtool: 'eval-cheap-module-source-map',

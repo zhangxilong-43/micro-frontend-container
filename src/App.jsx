@@ -1,22 +1,57 @@
-import React from 'react';
-import './style/App.less';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MicroApps from './Components/MicroApps';
-import Menu from './Components/Menu';
-import ErrorInfo from './Components/ErrorInfo';
-import Container from './Components/Container';
-
-export default function App() {
+import {
+    GithubFilled
+  } from '@ant-design/icons';
+  import { PageContainer, ProCard, ProLayout } from '@ant-design/pro-components';
+  import { ProConfigProvider } from '@ant-design/pro-provider';
+  import { useState } from 'react';
+  import MicroApps from './Components/MicroApps';
+  import defaultProps from './config/defaultProps';
+  
+  export default () => {
+    const [pathname, setPathname] = useState('/react-h5-template');
+  
     return (
-        <div id='project-container'>
-            <BrowserRouter>
-                <Menu />
-                <Routes>
-                    <Route path="/" element={<Container />} />
-                    <Route path="/micro-apps/:microAppId" element={<MicroApps />} />
-                    <Route path="*" element={<ErrorInfo />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-    )
-}
+      <ProConfigProvider dark={true} hashed={false}>
+        <ProLayout
+          {...defaultProps}
+          splitMenus={true}
+          location={{ pathname }}
+          menu={{ collapsedShowGroupTitle: true }}
+          menuFooterRender={(props) => {
+            if (props?.collapsed) return undefined;
+            return (
+              <p
+                style={{
+                  textAlign: 'center',
+                  paddingBlockStart: 12,
+                }}
+              >
+                Power by Xilonng
+              </p>
+            );
+          }}
+          menuItemRender={(item, dom) => (
+            <div
+              onClick={() => {
+                setPathname(item.path);
+              }}
+            >
+              {dom}
+            </div>
+          )}
+          actionsRender={() => <GithubFilled key="GithubFilled" />}
+        >
+          <PageContainer>
+            <ProCard
+              style={{
+                // height: '100vh',
+                minHeight: 800,
+              }}
+            >
+              <MicroApps pathname={pathname} />
+            </ProCard>
+          </PageContainer>
+        </ProLayout>
+      </ProConfigProvider>
+    );
+  };

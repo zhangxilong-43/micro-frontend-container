@@ -6,19 +6,14 @@ import { Spin } from 'antd';
 import MenuItems from '../config/microApps';
 import React, { useState } from 'react';
 
-export default function MicroApps() {
-    const team = useParams();
+export default function MicroApps(props) {
     const navigate = useNavigate();
     const [spinning, setSpinning] = useState(true);
-    const { microAppId } = team ?? {};
-    const appList = MenuItems.map(item => item.key);
-    // const errMicroAppId = !appList.includes(microAppId);
+    const { pathname: microAppId } = props;
 
     const onErrorCallback = () => {
         setSpinning(false);
-        navigate(`/404`);
-        // navigate(`/micro-apps/${appList[0]}`);
-        console.log('onErrorCallback');
+        navigate('/404');
     }
 
     return (
