@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { AiEditor } from "aieditor";
 import "aieditor/dist/style.css"
 
-function AIEditor() {
+function Editor() {
     //定义 ref
     const divRef = useRef(null);
     //初始化 AiEditor
@@ -26,4 +26,4 @@ function AIEditor() {
     )
 }
 
-export default AIEditor
+export default Editor

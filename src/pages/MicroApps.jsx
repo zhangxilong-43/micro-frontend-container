@@ -3,13 +3,13 @@
 import jsxCustomEvent from '@micro-zoe/micro-app/polyfill/jsx-custom-event'
 import { useParams, useNavigate } from 'react-router-dom';
 import { Spin } from 'antd';
-import MenuItems from '../config/microApps';
 import React, { useState } from 'react';
 
-export default function MicroApps(props) {
+export default function MicroApps() {
     const navigate = useNavigate();
+    let params = useParams();
     const [spinning, setSpinning] = useState(true);
-    const { pathname: microAppId } = props;
+    const { microAppId } = params;
 
     const onErrorCallback = () => {
         setSpinning(false);

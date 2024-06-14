@@ -56,7 +56,7 @@ module.exports = {
         title: "micro-frontend-container",
         filename: "index.html",
         inject: true, // 自动注入静态资源
-        hash: true,
+        hash: false,
         cache: false,
         // 复制 'index.html' 文件，并自动引入打包输出的所有资源（js/css）
         template: path.join(__dirname, "./public/index.html"),
@@ -74,7 +74,7 @@ module.exports = {
         name: 'template_container',
         filename: 'remoteEntry.js',
         exposes: {
-          './AIEditor': './src/components/AIEditor',
+          './Editor': './src/Components/Editor',
         },
         shared: {},
       }),

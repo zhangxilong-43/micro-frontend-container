@@ -1,10 +1,10 @@
 import React  from "react";
 import '../style/Container.less';
-import AIEditor from './AIEditor';
+import Editor from '../Components/Editor';
 
 const Container = () => (
     <>
-        <AIEditor />
+        <Editor />
     </>
 )
 
