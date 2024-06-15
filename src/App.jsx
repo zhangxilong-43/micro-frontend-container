@@ -1,18 +1,14 @@
-import { LogoutOutlined } from '@ant-design/icons';
 import {
   PageContainer,
   ProCard,
   ProConfigProvider,
   ProLayout,
 } from '@ant-design/pro-components';
-import {
-  Button,
-  Dropdown,
-} from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import defaultProps from './config/layoutDefaultProps.jsx';
 import Routers from './Components/Routers.jsx';
+import './style/App.less';
 
 export default () => {
   const [pathname, setPathname] = useState('/container');
@@ -38,25 +34,16 @@ export default () => {
           menu={{
             collapsedShowGroupTitle: true,
           }}
+          headerTitleRender={() => <></>}
           avatarProps={{
-            src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
+            src: 'https://avatars.githubusercontent.com/u/65009690?v=4',
             size: 'small',
             title: 'Xilonng Zhang',
             render: (props, dom) => {
               return (
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: 'logout',
-                        icon: <LogoutOutlined />,
-                        label: '退出登录',
-                      },
-                    ],
-                  }}
-                >
+                <div onClick={() => window.open('https://github.com/zhangxilong-43')}>
                   {dom}
-                </Dropdown>
+                </div>
               );
             },
           }}
@@ -72,11 +59,7 @@ export default () => {
           )}
         >
           <PageContainer>
-            <ProCard
-              style={{
-                minHeight: 800,
-              }}
-            >
+            <ProCard>
               <Routers/>
             </ProCard>
           </PageContainer>

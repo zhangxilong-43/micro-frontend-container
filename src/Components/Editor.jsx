@@ -1,17 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { AiEditor } from "aieditor";
+import '../style/editor.less'
 import "aieditor/dist/style.css"
 
-function Editor() {
-    //定义 ref
+function Editor(props) {
+    const { placeholder = "点击输入内容...", content = '这是放置在容器中的 AiEditor 组件。', className = 'editor_style' } = props;
     const divRef = useRef(null);
-    //初始化 AiEditor
     useEffect(() => {
         if (divRef.current) {
             const aiEditor = new AiEditor({
                 element: divRef.current,
-                placeholder: "点击输入内容...",
-                content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+                placeholder,
+                content,
             })
             return ()=>{
                 aiEditor.destroy();
@@ -21,7 +21,7 @@ function Editor() {
 
     return (
         <>
-            <div ref={divRef} style={{height: "600px"}} />
+            <div className={className} ref={divRef} />
         </>
     )
 }

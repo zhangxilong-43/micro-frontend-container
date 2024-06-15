@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 const host = "127.0.0.1";
 const port = "9091";
@@ -12,7 +12,7 @@ module.exports = {
       filename: "static/js/[name].js", 
       path: path.join(__dirname, "./dist"), 
       clean: true,
-      publicPath: "/",
+      publicPath: `http://${host}:${port}/`,
     },
     module: {
       rules: [
@@ -71,12 +71,21 @@ module.exports = {
         nodeModules: path.resolve(__dirname, "./node_modules"),
       }),
       new ModuleFederationPlugin({
-        name: 'template_container',
+        name: 'project_container',
         filename: 'remoteEntry.js',
         exposes: {
           './Editor': './src/Components/Editor',
         },
-        shared: {},
+        shared: { // 统一 react 等版本，避免重复加载
+          react: {
+            singleton: true,
+            eager: true
+          },
+          'react-dom': {
+            singleton: true,
+            eager: true
+          }
+        },
       }),
     ],
     devtool: 'eval-cheap-module-source-map',
