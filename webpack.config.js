@@ -12,7 +12,7 @@ module.exports = {
       filename: "static/js/[name].js", 
       path: path.join(__dirname, "./dist"), 
       clean: true,
-      publicPath: `http://${host}:${port}/`,
+      publicPath: process.env.PUBLICPATH,
     },
     module: {
       rules: [
