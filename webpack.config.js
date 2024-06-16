@@ -75,6 +75,7 @@ module.exports = {
         filename: 'remoteEntry.js',
         exposes: {
           './Editor': './src/Components/Editor',
+          './ContainerText': './src/Components/ContainerText',
         },
         shared: { // 统一 react 等版本，避免重复加载
           react: {

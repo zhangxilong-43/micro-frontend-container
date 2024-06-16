@@ -29,6 +29,11 @@ import {
               name: '流程绘制工具',
               icon: <SlidersTwoTone />,
             },
+            {
+              path: '/microApp/react-project-template',
+              name: 'React 项目模版',
+              icon: <SlidersTwoTone />,
+            },
           ],
         },
       ],
