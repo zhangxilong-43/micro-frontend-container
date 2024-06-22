@@ -10,11 +10,6 @@ import {
       path: '/',
       routes: [
         {
-          path: '/container',
-          name: '容器页面',
-          icon: <SmileFilled />,
-        },
-        {
           path: '/microApp',
           name: '微应用',
           icon: <CrownFilled />,

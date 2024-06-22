@@ -7,9 +7,8 @@ import ErrorInfo from './ErrorInfo';
 const Routers = () => {
     return (
         <Routes>
-            <Route path="/" element={<Redirect to="/container" />} />
-            <Route path="/container" element={<Container />} />
-            <Route path="/microApp" element={<div />} />
+            <Route path="/" element={<Redirect to="/microApp" />} />
+            <Route path="/microApp" element={<Container />} />
             <Route path="/microApp/:microAppId" element={<MicroApps />} />
             <Route path="/*" element={<ErrorInfo />} />
         </Routes>

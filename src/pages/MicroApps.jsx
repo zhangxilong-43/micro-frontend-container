@@ -22,7 +22,8 @@ export default function MicroApps() {
             {
                 microAppId ? <micro-app 
                     name={microAppId} 
-                    url={`https://${microAppId}.pages.dev/` } 
+                    // url={`https://${microAppId}.pages.dev/` } 
+                    url={microAppId === 'react-project-template' ? 'http://127.0.0.1:8082/' : `https://${microAppId}.pages.dev/` } 
                     onMounted={() => setSpinning(false)}
                     onUnmount={() => setSpinning(true)}
                     onError={() => onErrorCallback()}
